@@ -1,4 +1,4 @@
-﻿#if NET35
+﻿#if NET35 || UNITY_5
 
 using System.Runtime.InteropServices;
 using Theraot.Collections.ThreadSafe;

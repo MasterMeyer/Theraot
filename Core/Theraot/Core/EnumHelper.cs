@@ -6,7 +6,7 @@ namespace Theraot.Core
 {
     public static class EnumHelper
     {
-#if NET35
+#if NET35 || UNITY_5
 
         public static bool HasFlag(this Enum value, Enum flag)
         {

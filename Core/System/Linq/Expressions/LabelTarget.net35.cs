@@ -7,7 +7,7 @@ using Theraot.Core;
 
 namespace System.Linq.Expressions
 {
-#if NET35
+#if NET35 || UNITY_5
 
     /// <summary>
     /// Used to denote the target of a <see cref="GotoExpression"/>.

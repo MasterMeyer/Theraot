@@ -122,7 +122,7 @@ namespace Theraot.Collections
             }
         }
 
-#if NET35
+#if NET35 || UNITY_5
 
         public static bool Contains<T>(this IEnumerable<T> source, IEnumerable<T> items)
         {

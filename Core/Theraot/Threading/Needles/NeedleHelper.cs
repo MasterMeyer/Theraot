@@ -152,7 +152,7 @@ namespace Theraot.Threading.Needles
                             target =>
                             {
                                 var needle = tmpB.Invoke();
-                                needle.Value = target.Invoke();
+                                ((INeedle<T>)needle).Value = target.Invoke();
                                 return needle;
                             };
                         }
@@ -245,7 +245,7 @@ namespace Theraot.Threading.Needles
                         target =>
                         {
                             var needle = tmpA.Invoke();
-                            needle.Value = target;
+	                        ((INeedle<T>)needle).Value = target;
                             return needle;
                         };
                     }

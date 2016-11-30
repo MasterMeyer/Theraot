@@ -6,7 +6,7 @@ using System.Dynamic.Utils;
 
 namespace System.Linq.Expressions
 {
-#if NET35
+#if NET35 || UNITY_5
     /// <summary>
     /// Stores information needed to emit debugging symbol information for a
     /// source file, in particular the file name and unique language identifier.

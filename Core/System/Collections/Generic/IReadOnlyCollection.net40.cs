@@ -11,7 +11,7 @@ namespace System.Collections.Generic
     }
 
 #endif
-#if NET35
+#if NET35 || UNITY_5
 
     public interface IReadOnlyCollection<T> : IEnumerable<T>
     {

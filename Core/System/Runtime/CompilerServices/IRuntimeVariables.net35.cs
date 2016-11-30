@@ -1,4 +1,4 @@
-#if NET35
+#if NET35 || UNITY_5
 
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.

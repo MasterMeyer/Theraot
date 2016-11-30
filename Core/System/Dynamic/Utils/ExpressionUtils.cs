@@ -89,7 +89,7 @@ namespace System.Dynamic.Utils
 
         public static void ValidateArgumentTypes(MethodBase method, ExpressionType nodeKind, ref ReadOnlyCollection<Expression> arguments)
         {
-#if NET35
+#if NET35 || UNITY_5
             Debug.Assert(nodeKind == ExpressionType.Invoke || nodeKind == ExpressionType.Call || nodeKind == ExpressionType.New);
 #else
             Debug.Assert(nodeKind == ExpressionType.Invoke || nodeKind == ExpressionType.Call || nodeKind == ExpressionType.Dynamic || nodeKind == ExpressionType.New); 
@@ -136,7 +136,7 @@ namespace System.Dynamic.Utils
                         throw Error.IncorrectNumberOfConstructorArguments();
                     case ExpressionType.Invoke:
                         throw Error.IncorrectNumberOfLambdaArguments();
-#if !NET35
+#if !(NET35 || UNITY_5)
                     case ExpressionType.Dynamic:
 #endif
                     case ExpressionType.Call:
@@ -167,7 +167,7 @@ namespace System.Dynamic.Utils
                             throw Error.ExpressionTypeDoesNotMatchConstructorParameter(arg.Type, pType);
                         case ExpressionType.Invoke:
                             throw Error.ExpressionTypeDoesNotMatchParameter(arg.Type, pType);
-#if !NET35
+#if !(NET35 || UNITY_5)
                         case ExpressionType.Dynamic:
 #endif
                         case ExpressionType.Call:
@@ -190,7 +190,7 @@ namespace System.Dynamic.Utils
             // validate that we can read the node
             switch (expression.NodeType)
             {
-#if !NET35
+#if !(NET35 || UNITY_5)
                 case ExpressionType.Index:
                     IndexExpression index = (IndexExpression)expression;
                     if (index.Indexer != null && !index.Indexer.CanRead)
@@ -233,7 +233,7 @@ namespace System.Dynamic.Utils
         internal static ParameterInfo[] GetParametersForValidation(MethodBase method, ExpressionType nodeKind)
         {
             ParameterInfo[] pis = method.GetParameters();
-#if !NET35
+#if !(NET35 || UNITY_5)
             if (nodeKind == ExpressionType.Dynamic)
             {
                 pis = pis.RemoveFirst(); // ignore CallSite argument

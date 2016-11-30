@@ -627,7 +627,7 @@ namespace Theraot.Core
         }
     }
 
-#if NET35 || NET40
+#if NET35 || UNITY_5 || NET40
 
     public static partial class TypeHelper
     {

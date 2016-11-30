@@ -1,4 +1,4 @@
-﻿#if NET35 || NET40
+﻿#if NET35 || UNITY_5 || NET40
 
 namespace System.Collections.Generic
 {

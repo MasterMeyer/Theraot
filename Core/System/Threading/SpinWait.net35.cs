@@ -22,7 +22,7 @@
 
 using Theraot.Core;
 
-#if NET35
+#if NET35 || UNITY_5
 
 namespace System.Threading
 {

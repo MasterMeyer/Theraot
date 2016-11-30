@@ -1,4 +1,4 @@
-#if NET35 || NET40
+#if NET35 || UNITY_5 || NET40
 
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
@@ -130,7 +130,7 @@ namespace System.Runtime.CompilerServices
                         }
                         catch (Exception e)
                         {
-#if NET35
+#if NET35 || UNITY_5
                             eventArgs.ThrownDuringHandler = e;
 #else
                             GC.KeepAlive(e);
@@ -140,7 +140,7 @@ namespace System.Runtime.CompilerServices
                     }
                     if (eventArgs.Unwind)
                     {
-#if NET35
+#if NET35 || UNITY_5
                         // unwind
                         if (innerException == null)
                         {

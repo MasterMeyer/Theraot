@@ -24,7 +24,7 @@ namespace Theraot.Collections
         public static ICollection<T> AsDistinctCollection<T>(IEnumerable<T> source)
         {
             // Workaround for .NET 3.5 when all you want is Contains and no duplicates
-#if NET35
+#if NET35 || UNITY_5
             if (source == null)
             {
                 throw new ArgumentNullException("source");

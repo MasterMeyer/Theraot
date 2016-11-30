@@ -26,7 +26,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#if NET35
+#if NET35 || UNITY_5
 
 using System.Diagnostics;
 using Theraot.Core;

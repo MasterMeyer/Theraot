@@ -1,6 +1,7 @@
 // Needed for NET40
 
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -622,23 +623,26 @@ namespace Theraot.Collections
 
             var control = 0;
 
-            var buffer = new SafeDictionary<T, bool>();
+	        SafeDictionary<T, bool> buffer = new SafeDictionary<T, bool>();
             Predicate<T> newFilter = item => Thread.VolatileRead(ref control) == 0;
             var proxy = new ProxyObservable<T>();
 
-            var result = new Progressor<T>(
+            Progressor<T> result = new Progressor<T>(
                 (out T value) =>
                 {
                     Interlocked.Increment(ref control);
                     try
                     {
                         again:
-                        foreach (var item in buffer.Where(item => !item.Value))
+                        foreach (KeyValuePair<T, bool> item in buffer)
                         {
-                            value = item.Key;
-                            buffer.Set(value, true);
-                            proxy.OnNext(value);
-                            return true;
+	                        if (!item.Value)
+	                        {
+		                        value = item.Key;
+		                        buffer.Set(value, true);
+		                        proxy.OnNext(value);
+		                        return true;
+	                        }
                         }
                         if (wrapped.TryTake(out value))
                         {

@@ -19,7 +19,7 @@ namespace Theraot.Core
             IEnumerable<string> fileEntries = null;
             try
             {
-#if NET35
+#if NET35 || UNITY_5
                 fileEntries = Directory.GetFiles(folder, pattern, SearchOption.TopDirectoryOnly);
 #else
                 fileEntries = Directory.EnumerateFiles(folder, pattern, SearchOption.TopDirectoryOnly);
@@ -70,7 +70,7 @@ namespace Theraot.Core
             // TODO handle exceptions
             try
             {
-#if NET35
+#if NET35 || UNITY_5
                 var directories = Directory.GetDirectories(folder);
 #else
             var directories = Directory.EnumerateDirectories(folder);

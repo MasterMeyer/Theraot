@@ -40,10 +40,10 @@ namespace Theraot.Collections.ThreadSafe
 
         internal static TNeedle GetNeedle(T value)
         {
-            TNeedle result;
+	        TNeedle result;
             if (_pool.TryGet(out result))
             {
-                result.Value = value;
+                ((INeedle<T>)result).Value = value;
             }
             else
             {
